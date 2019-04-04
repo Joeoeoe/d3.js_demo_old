@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="d3/d3.js"></script>
+    <style>
+        .chart div{
+            font: 10px sans-serif;
+            background-color: steelblue;
+            text-align: right;
+            padding: 3px;
+            margin: 1px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="chart"></div>
+
+<div id="father">
+    <div id="son"></div>
+</div>
+<div class="son"></div>
+<script>
+
+
+    const data = [10,55,33];
+
+    let selection = d3.select('.chart')
+        .selectAll('div')
+        .data(data).join('div')
+        .style('width', d => d * 10 + 'px')
+        .text(d => d);
+
+    // data[1] = 2;
+    // d3.select('.chart')
+    //     .selectAll('div')
+    //     .data(data).join()
+    //     .style('width', d => d * 10 + 'px')
+    //     .text(d => d);
+    /**
+     * enter
+     */
+    // let enterSelection = selection.enter();
+    // console.log(enterSelection);
+    //
+    // enterSelection.append('div')
+    //     .style('width', d => d * 10 + 'px')
+    //     .text(d => d);
+
+    /**
+     * exit
+     */
+    // let exitSelection = selection.exit();
+    // console.log(exitSelection);
+    //
+    // exitSelection.remove();
+
+    /**
+     * join:enter
+     */
+    // let selection = d3.select('.chart')
+    //     .selectAll('div')
+    //     .data(data).join('div')
+    //     .style('width', d => d * 10 + 'px')
+    //     .text(d => d);
+
+    /**
+     * join:exit
+     */
+    // let selection = d3.select('.chart')
+    //     .selectAll('div')
+    //     .data(data).join('div')
+    //     .style('width', d => d * 10 + 'px')
+    //     .text(d => d);
+
+    /**
+     * 动画变换
+     */
+    // const t = d3.transition() //定义动画变换
+    //     .duration(500)
+    //     .ease(d3.easeLinear);
+    //
+    // let selection = d3.select('.chart')
+    //     .selectAll('div')
+    //     .data(data).join('div').style('width', 0).
+    //     transition(t) //使用动画变换
+    //     .style('width', d => d * 10 + 'px')
+    //     .text(d => d);
+</script>
+</body>
+</html>
