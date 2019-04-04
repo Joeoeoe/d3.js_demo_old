@@ -13,7 +13,7 @@
             color: white;
         }
     </style>
-    <script src="./d3/d3.js"></script>
+    <script src="build/d3.js"></script>
 </head>
 <body>
     <div class="chart"></div>
@@ -34,15 +34,15 @@
 
 
 
-    // console.log(d3.select('.chart').selectAll('div').data(data));
+    // console.log(build.select('.chart').selectAll('div').data(data));
     //
-    // // let test = d3.select('.chart').selectAll('div').data(data).join().style('width',  d => d * 10 + 'px').text( d => d);
+    // // let test = build.select('.chart').selectAll('div').data(data).join().style('width',  d => d * 10 + 'px').text( d => d);
     // //
     // // // document.getElementsByClassName('chart')[0].appendChild(document.createElement('div'));
-    // console.log(d3.select('.chart').selectAll('div').data(data));
+    // console.log(build.select('.chart').selectAll('div').data(data));
 
 
-    // let chart = d3.select('.chart'); //选择元素
+    // let chart = build.select('.chart'); //选择元素
     // let bar = chart.selectAll('div');  //要进行数据绑定的元素，chart中无此元素，此时返回的selection为空，后面会提到一个enter的概念
     // console.log(bar);
     //

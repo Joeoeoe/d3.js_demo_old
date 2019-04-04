@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="d3/d3.js"></script>
+    <script src="build/d3.js"></script>
     <style>
         .chart div{
             font: 10px sans-serif;
@@ -34,7 +34,7 @@
         .text(d => d);
 
     // data[1] = 2;
-    // d3.select('.chart')
+    // build.select('.chart')
     //     .selectAll('div')
     //     .data(data).join()
     //     .style('width', d => d * 10 + 'px')
@@ -60,7 +60,7 @@
     /**
      * join:enter
      */
-    // let selection = d3.select('.chart')
+    // let selection = build.select('.chart')
     //     .selectAll('div')
     //     .data(data).join('div')
     //     .style('width', d => d * 10 + 'px')
@@ -69,7 +69,7 @@
     /**
      * join:exit
      */
-    // let selection = d3.select('.chart')
+    // let selection = build.select('.chart')
     //     .selectAll('div')
     //     .data(data).join('div')
     //     .style('width', d => d * 10 + 'px')
@@ -78,11 +78,11 @@
     /**
      * 动画变换
      */
-    // const t = d3.transition() //定义动画变换
+    // const t = build.transition() //定义动画变换
     //     .duration(500)
-    //     .ease(d3.easeLinear);
+    //     .ease(build.easeLinear);
     //
-    // let selection = d3.select('.chart')
+    // let selection = build.select('.chart')
     //     .selectAll('div')
     //     .data(data).join('div').style('width', 0).
     //     transition(t) //使用动画变换
