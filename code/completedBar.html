@@ -47,9 +47,11 @@
         .attr('transform', (d, i) => {
             return 'translate(' + (padding.left + i * barWidth) + ',' + (padding.top + barHeight - barScale(d)) + ')'
         });
+
     barContainer.append('rect')
         .attr('height', d => barScale(d))
         .attr('width', barWidth - 1);
+
     barContainer
         .append('text')
         .text(d => d)

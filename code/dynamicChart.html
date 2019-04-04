@@ -47,13 +47,36 @@
         .attr('transform', (d, i) => {
             return 'translate(' + (padding.left + i * barWidth) + ',' + (padding.top + barHeight - barScale(d)) + ')'
         });
+
+
+
+
+    // barContainer.append('rect')
+    //     .attr('height', 0) //动画开始前状态
+    //     .attr('width', barWidth - 1)
+    //     .attr('y', d => barScale(d)) //y是相对rect父级的g容器的，顶端从底部开始
+    //     .transition() //selection.transition() 返回transition
+    //     .duration(2000)//持续时间
+    //     .ease(d3.easeBackInOut)//transition.ease(easing function)，easing function是d3的动画函数
+    //     .attr('height', d => barScale(d))//transition.attr()
+    //     .attr('y', 0);//到g容器顶部
+
+    //定义transition
+    let t = d3.transition()
+        .duration(2000)
+        .ease(d3.easeBackInOut);
+
     barContainer.append('rect')
         .attr('height', 0)
         .attr('width', barWidth - 1)
-        .transition()
-        .duration(1000)
+        .attr('y', d => barScale(d))
+        .transition(t) //使用定义的transition
         .ease(d3.easeBackInOut)
-        .attr('height', d => barScale(d));
+        .attr('height', d => barScale(d))
+        .attr('y', 0);
+
+
+
 
     barContainer
         .append('text')
