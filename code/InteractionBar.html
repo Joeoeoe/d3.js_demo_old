@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="build/d3.js"></script>
+    <style>
+        rect {
+            fill: pink
+        }
+        .selected-rect{
+            fill: lightblue
+        }
+
+        text {
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+<svg class="chart">
+</svg>
+<script>
+    const
+        data = [3, 6, 10, 25],
+        barWidth = 100,
+        barHeight = 300,
+        padding = { //svg留白用
+            top: 100,
+            right: 100,
+            bottom: 100,
+            left: 100
+        };
+
+    /**
+     * 创建比例尺
+     */
+    let barScale = d3.scaleLinear().domain([0, d3.max(data)]).range([0, barHeight]),
+        yAxisScale = d3.scaleLinear().domain([d3.max(data), 0]).range([0, barHeight]),//y轴使用线性比例尺，注意domain输入域
+        xAxisScale = d3.scaleBand().domain([1, 2, 3, 4]).range([0, (barWidth - 1) * data.length]); //x轴使用scaleBand比例尺
+
+    /**
+     * 创建柱状图
+     */
+    let barContainer = d3.select('.chart')
+        .attr('width', data.length * barWidth + padding.left + padding.right)
+        .attr('height', barHeight + padding.top + padding.bottom)
+        .selectAll('g')
+        .data(data).enter().append('g')
+        .attr('transform', (d, i) => {
+            return 'translate(' + (padding.left + i * barWidth) + ',' + (padding.top + barHeight - barScale(d)) + ')'
+        });
+
+    barContainer.append('rect')
+        .attr('height', d => barScale(d))
+        .attr('width', barWidth - 1)
+        .on('mouseover', function () {
+            d3.select(this) //指向元素
+                .attr('class', 'selected-rect'); //通过class改变样式
+        })
+        .on('mouseout', function () {
+            d3.select(this)
+                .attr('class', null);
+        });
+
+
+    barContainer
+        .append('text')
+        .text(d => d)
+        .attr('y', 10)
+        .attr('x', barWidth / 2 - 5);
+
+    /**
+     * 创造y轴
+     */
+    let yAxis = d3.axisLeft(yAxisScale);
+    d3.select('.chart')
+        .append('g')
+        .attr('transform', 'translate(' + (padding.left - 10) + ',' + padding.top + ') ')
+        .call(yAxis);
+
+    /**
+     * 创建X轴
+     */
+    let xAxis = d3.axisBottom(xAxisScale);
+    d3.select('.chart')
+        .append('g')
+        .attr('transform', 'translate(' + (padding.left) + ',' + (padding.top + barHeight) + ')')
+        .call(xAxis);
+
+</script>
+</body>
+</html>
