@@ -8,10 +8,7 @@
 </head>
 
 <body>
-    <svg class="pie-svg">
-
-    </svg>
-
+    <svg class="pie-svg"></svg>
 </body>
 
 <script>
@@ -42,7 +39,6 @@
     const width = 800,
           height = 500,
           radius = Math.min(width, height)/2 - 10;
-          console.log(radius);
     /**
      * 插入g容器
      */
@@ -88,7 +84,7 @@
     const arc = d3.arc();
     arc.outerRadius(radius);
     arc.innerRadius(0);
-    console.log('举例:生成path的d属性：',arc(pieData[0]));
+    console.log(`举例:生成path的d属性：\n`,arc(pieData[0]));
 
     /**
      * 现在有了处理后的数据(pieData)和生成path的arc generator(arc)
