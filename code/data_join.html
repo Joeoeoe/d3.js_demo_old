@@ -32,6 +32,9 @@
         .data(data).join('div')
         .style('width', d => d * 10 + 'px')
         .text(d => d);
+    console.log(selection.data());
+    const test = d3.selectAll('div');
+    console.log(test.data());
 
     // data[1] = 2;
     // build.select('.chart')
